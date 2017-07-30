@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+# Criado por Eduardo Schuh Pereira
+# Data da criação 21/07/17
+# Data da última edição 30/07/17
+#
+# Script criado para criar, editar, listar, excluir e pesquisar arquivos em um diretório.
+
 
 while [[ true ]]; do
 	# Menu mostrando as opções 
@@ -11,6 +18,7 @@ opcao=$(zenity --width=200 --height=230 --list --column "Escolha uma das opçõe
 		"Sair" )
 
 case "$opcao" in
+# Função para criar um novo arquivo.
 	Adicionar )
 
 		# VARIAVEL PARA NOMEAR O ARQUIVO
@@ -22,7 +30,7 @@ case "$opcao" in
 		# COMANDO QUE ABRE UM NOVO ARQUIVO PARA ADICIONAR UM NOVO TEXTO.
 			nano $DIR
 	;;
-
+# Função para editar arquivo.
 	Editar )
 		# Diretório que serão salvos os arquivos
 		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
@@ -37,7 +45,7 @@ case "$opcao" in
 		# ABRE O ARQUIVO.
 			nano $DIR$arquivo
 	;;
-
+# função para excluir o arquivo.
 	Excluir )
 		# Diretório que serão salvos os arquivos
 		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
@@ -48,15 +56,15 @@ case "$opcao" in
 				read NOME
 					sudo rm $DIR$NOME
 	;;
-
+# Função para listar o arquivo.
 	Listar )
 		# Diretório que serão salvos os arquivos
 		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
 		
 			arq=$(ls $DIR |  yad --info --width=200 --height=230 --list --title='Escolha um dos arquivos' --column='Arquivos' | cut -d'|' -f1 )
-			nano $DIR$arq
+			yad --text-info --title="$arq" --width=1024 --height=768 --filename="/$DIR/$arq"
 		;;
-
+# Função para pesquisar arquivos dentro do diretório.
 	Pesquisar )
 		# Diretório que serão salvos os arquivos
 		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
