@@ -17,7 +17,7 @@ case "$opcao" in
 		NOME="$1"
 
 		# Diretório que serão salvos os arquivos
-		DIR="/home/schuh/Arquivos/Scripts/manual/comandos/"
+		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
 
 		# COMANDO QUE ABRE UM NOVO ARQUIVO PARA ADICIONAR UM NOVO TEXTO.
 			nano $DIR
@@ -25,7 +25,7 @@ case "$opcao" in
 
 	Editar )
 		# Diretório que serão salvos os arquivos
-		DIR="/home/schuh/Arquivos/Scripts/manual/comandos/"
+		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
 
 		# Lista os arquivos dentro do diretório.
 		#gnome-search-tool --path=$DIR 
@@ -40,7 +40,7 @@ case "$opcao" in
 
 	Excluir )
 		# Diretório que serão salvos os arquivos
-		DIR="/home/schuh/Arquivos/Scripts/manual/comandos/"
+		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
 		
 			echo "Antes de excluir um arquivo, verifique o nome corretamente."
 			echo ""
@@ -51,18 +51,15 @@ case "$opcao" in
 
 	Listar )
 		# Diretório que serão salvos os arquivos
-		DIR="/home/schuh/Arquivos/Scripts/manual/comandos/"
+		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
 		
-		echo ""
-		echo "### ABAIXO ESTÃO OS ARQUIVOS SALVOS EM: $DIR ###"
-		echo ""
-			ls $DIR | yad --info --width=200 --height=230 --list --column='Arquivos' $(cat $DIR)
-		echo ""
+			arq=$(ls $DIR |  yad --info --width=200 --height=230 --list --title='Escolha um dos arquivos' --column='Arquivos' | cut -d'|' -f1 )
+			nano $DIR$arq
 		;;
 
 	Pesquisar )
 		# Diretório que serão salvos os arquivos
-		DIR="/home/schuh/Arquivos/Scripts/manual/comandos/"
+		DIR="/home/schuh/Arquivos/Scripts/manualV2/comandos/"
 
 		# Lista os arquivos dentro do diretório.
 			gnome-search-tool --path=$DIR "*.txt"
